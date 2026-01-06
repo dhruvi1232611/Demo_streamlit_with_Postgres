@@ -1,6 +1,5 @@
 import streamlit as slt
 import pandas as pd
-from PIL.ImagePalette import random
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
