@@ -8,15 +8,18 @@ df=pd.read_csv("data/Iris.csv")
 slt.title("Iris Flower Classification")
 slt.write(df.head())
 
-x= df.drop(columns=df["Species"])
+x= df.loc[:,df.columns!="Species"]
 y= df["Species"]
 
-x_train , x_test , y_train , y_test = train_test_split(test_size=0.2,randome_state=42)
+slt.write(x.head())
+slt.write(y.head())
+
+x_train , x_test , y_train , y_test = train_test_split(x,y,test_size=0.2,random_state=42)
 model= LogisticRegression()
 model.fit(x_train,y_train)
 
-y_pred= model.predict(y_test)
+y_pred= model.predict(x_test)
 slt.write(y_pred)
 
-acc=accuracy_score(x_test,y_pred)
+acc=accuracy_score(y_test,y_pred)
 slt.write("Accuracy-score",acc)
